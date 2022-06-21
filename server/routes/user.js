@@ -28,6 +28,9 @@ router.post('/signup', authController.createUser, authController.createSession, 
 
   
 //logout
+router.post('/logout', authController.getCookie, authController.removeSession, authController.clearCookie, (req, res) =>{
+  return;
+})
 
 
 

@@ -88,5 +88,12 @@ authController.verifyUser = (req, res, next) =>{
 
 };
 
+authController.removeSession = (req, res, next) =>{
+  const ssid = res.locals.ssid;
+  //remove ssid from session table
+  `UPDATE sessions SET cookieid = null WHERE cookieid = '${ssid}'`
+}
+
+
 
 module.exports = authController;
