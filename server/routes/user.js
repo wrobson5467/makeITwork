@@ -10,10 +10,13 @@ const router = express.Router();
 
 
 //login
-// router.post('/login', authController.verifyUser, authController.createSession, authController.setCookie, (req, res) =>{
- 
+router.post('/login', authController.verifyUser, authController.createSession, authController.setCookie, (req, res) =>{
+  //uncomment below when test backend only
 
-// })
+  // res.redirect('/');
+  res.redirect('/main');
+
+})
 
 //signup
 router.post('/signup', authController.createUser, authController.createSession, authController.setCookie, (req, res) =>{
