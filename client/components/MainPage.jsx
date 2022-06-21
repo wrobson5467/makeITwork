@@ -1,6 +1,7 @@
-const React = require('react');
 
-class MainPage extends React.Component {
+import React from 'react';
+
+   function MainPage()   {
 
 }
 

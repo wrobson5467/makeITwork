@@ -1,7 +1,7 @@
-const React = require('react');
 
-class Nav extends React.Component {
-  render () {
+import React from 'react';
+
+function Nav (){
     return (
       <div>
         <div className='navBar'>
@@ -17,7 +17,6 @@ class Nav extends React.Component {
         </div>
       </div>
     )
-  }
 }
 
 export default Nav;

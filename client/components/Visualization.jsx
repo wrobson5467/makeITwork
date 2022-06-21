@@ -1,4 +1,5 @@
-const react = require('react');
+
+import React from 'react';
 
 class Visualization extends React.Component {
 
