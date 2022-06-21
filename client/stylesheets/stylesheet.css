@@ -1,0 +1,50 @@
+body {
+  background-color: lightblue;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+/****************
+      Nav Bar 
+*****************/
+.headerBar {
+  display: flex;
+  align-items: center;
+  background-color: rgb(135, 177, 222);
+}
+.navBar {
+  width: 100%;
+  font-size: 20px;
+}
+.navItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-self: center;
+  list-style-type: none;
+}
+li {
+  flex-grow: 1;
+  justify-content: center;
+}
+
+/*************
+     login page
+****************/
+.loginContainer {
+  margin-top: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.loginForm {
+  width: 25%;
+  
+}
+.signupButton button{
+  width: 100%;
+}
