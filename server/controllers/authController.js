@@ -82,18 +82,15 @@ authController.verifyUser = (req, res, next) =>{
 
     })
   })
+  .catch(err => {
+    console.log("Error in authController.verifyUser: ", err);
+
+  })
 
 };
 
-authController.removeSession = (req, res, next) =>{
-  const ssid = res.locals.ssid;
-  //remove ssid from session table
-  `UPDATE sessions SET cookieid = null WHERE cookieid = '${ssid}'`
-}
-
-
-
 authController.getCookie= (req, res, next) =>{
+  console.log("in getCookie");
   res.locals.ssid = req.cookie.ssid;
   return next();
 
@@ -111,6 +108,28 @@ authController.verifySession= (req, res, next) =>{
       res.redirct('/user/login');
     }
   })
+  .catch(err => {
+    console.log("Error in authController.verifySession: ", err);
+  })
+ };
+
+ authController.removeSession = (req, res, next) =>{
+  //remove ssid from session table
+  const query =  `UPDATE sessions SET cookieid = null WHERE cookieid = '${res.locals.ssid}'`;
+  db.query(query)
+  .then(data =>{
+    console.log("updated cookieid to null");
+    return next();
+  })
+  .catch(err =>{
+    console.log("Error in authController.removeSession: ", err);
+  })
+ };
+
+ authController.clearCookie = (req, res, next) =>{
+  res.clearCookie('ssid');
+  return next();
+  
  };
 
 
