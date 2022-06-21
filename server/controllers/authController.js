@@ -38,7 +38,7 @@ authController.createSession = (req, res, next) => {
   if(!userid){
     return next({message: "Error in authController.createSession - Input not complete"});
   }
-  const query = `INSERT INTO sessions ("cookieid","created_at") VALUES ('${userid}', current_timestamp)`;
+  const query = `INSERT INTO sessions ("cookieid","userid","created_at") VALUES ('${userid}', '${userid}', current_timestamp)`;
   db.query(query)
   .then(data => {
     return next();
@@ -61,10 +61,8 @@ authController.setCookie = (req, res, next) =>{
 authController.verifyUser = (req, res, next) =>{
   const {username, password} = req.body;
   if(!password || !username){
-    return next(new Error("Error in authController.verifyUser - Input not complete"));
+    return next({message:"Error in authController.verifyUser - Input not complete"});
   };
-  
-
   
   const query = `SELECT userid, password FROM users WHERE username = '${username}'`;
 
@@ -85,8 +83,28 @@ authController.verifyUser = (req, res, next) =>{
     })
   })
 
+};
+
+
+authController.getCookie= (req, res, next) =>{
+  res.locals.ssid = req.cookie.ssid;
+  return next();
 
 };
+
+authController.verifySession= (req, res, next) =>{
+  const query = `SELECT COUNT(*) AS count FROM sessions WHERE cookieid = '${res.locals.ssid}'`;
+  db.query(query)
+  .then(data =>{
+    if(data.rows[0].count > 0){
+      return next();
+    }
+    else{
+      console.log("invalid session, redirect to login page");
+      res.redirct('/user/login');
+    }
+  })
+ };
 
 
 module.exports = authController;
