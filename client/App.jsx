@@ -6,8 +6,11 @@ import Login from './components/Login.jsx';
 import MainPage from './components/MainPage.jsx';
 import Visualization from "./components/Visualization.jsx";
 import SignUp from "./components/signup.jsx";
+import {useFetchJobsQuery} from './features/jobs/jobs-API- slice';
 
 function App (props){
+  const {data = [], isFetching} = useFetchJobsQuery();
+
     return (
       <div>
         <Router>
