@@ -8,7 +8,7 @@ const authController = {};
 authController.createUser = (req, res, next) => {
   const {username, password} = req.body;
   if(!password || !username){
-    return next(new Error("Error in authController.createUser - Input not complete"));
+    return next({message: "Error in authController.createUser - Input not complete"});
   }
   bcrypt.hash(password, SALTROUND, (err, hashedPassword) => {
     const query = 
@@ -36,7 +36,7 @@ authController.createSession = (req, res, next) => {
   const userid = res.locals.userid;
   console.log("userid in createSession ", userid);
   if(!userid){
-    return next(new Error("Error in authController.createSession - Input not complete"));
+    return next({message: "Error in authController.createSession - Input not complete"});
   }
   const query = `INSERT INTO sessions ("cookieid","created_at") VALUES ('${userid}', current_timestamp)`;
   db.query(query)
@@ -57,6 +57,36 @@ authController.setCookie = (req, res, next) =>{
   
 };
 
+//verifyUser for user login
+authController.verifyUser = (req, res, next) =>{
+  const {username, password} = req.body;
+  if(!password || !username){
+    return next(new Error("Error in authController.verifyUser - Input not complete"));
+  };
+  
+
+  
+  const query = `SELECT userid, password FROM users WHERE username = '${username}'`;
+
+  db.query(query)
+  .then(data =>{
+    console.log("data in verifyUser: ",JSON.stringify(data.rows[0].password));
+
+    bcrypt.compare(password, data.rows[0].password, (err, result)=>{
+      if(result) {
+        res.locals.userid = data.rows[0].userid;
+        return next();
+      }
+      else{
+        console.log("password does not match");
+        return next({message: 'Password does not match'});
+      }
+
+    })
+  })
+
+
+};
 
 
 module.exports = authController;

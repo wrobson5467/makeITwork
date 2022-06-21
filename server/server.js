@@ -7,7 +7,7 @@ const PORT = 3000;
 /**
  * handle parsing request body
  */
- app.use(express.json());
+app.use(express.json());
 
 const userRouter = require('./routes/user.js');
 
