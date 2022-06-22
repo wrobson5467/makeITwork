@@ -22,6 +22,7 @@ router.post('/login', authController.verifyUser, authController.createSession, a
 
 //signup when user sign up
 router.post('/signup', authController.createUser, authController.createSession, authController.setCookie, (req, res) =>{
+  console.log('made it through')
   res.redirect('/main');
   //used for test:
   //return res.send("signup successfully");
