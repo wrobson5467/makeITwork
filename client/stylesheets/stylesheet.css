@@ -48,27 +48,35 @@ li a {
   text-align: center;
   padding: 14px 16px;
 }
+.home:hover {
+  transform: scale(1.2);
+}
+li a:hover:not(.home) {
+  background-color: #023047;
+}
 .home {
   background-color: #fb8500;
 }
+
 
 /*************
      login page
 ****************/
 .loginContainer {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
   margin-top: 100px;
   /* background-color:#f1f1f1; */
 }
-form {
+/* form {
   border: 3px solid #f1f1f1;
-}
+} */
+
 label {
   font-family: 'Libre Franklin', sans-serif;
   font-weight: 400;
-  font-size: 20px;
+  font-size: 15px;
 }
 input[type=text], input[type=password] {
   width: 100%;
@@ -99,6 +107,7 @@ button:hover {
 }
 .container {
   padding: 16px;
+  background-color: #219ebc;
 }
 span.psw {
   float: right;
@@ -121,9 +130,9 @@ span.psw {
      sign up page
 ****************/
 .signupContainer {
-  width: 50%;
-  margin-left: 25%;
-  margin-right: 25%;
+  width: 30%;
+  margin-left: 35%;
+  margin-right: 35%;
   margin-top: 100px;
 }
 .signupForm {
