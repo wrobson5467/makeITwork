@@ -10,12 +10,11 @@ const PORT = 3000;
 app.use(express.json());
 
 const userRouter = require('./routes/user.js');
+const jobsRouter = require('./routes/jobsAPI.js')
 
+app.use('/api/user', userRouter);
 
-app.use('/user', userRouter);
-
-
-
+app.use('/api/jobs', jobsRouter)
 
 app.get('/', (req, res) =>{
   return res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));

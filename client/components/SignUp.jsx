@@ -9,10 +9,10 @@ function SignUp(props) {
           <label>Username</label>
           <input type='text' name='username' required/><br></br>
           <label>Password</label>
-          <input type='text' name='password' required/><br></br>
+          <input type='password' name='password' required/><br></br>
           <label>Confirm Password</label>
-          <input type='text' name='passwordConfirm' required/><br></br>
-          <button type='submit' id='signUpButton'>Create Account</button>          <button type='submit' id='forgotPWButton'>Forgot Password</button>
+          <input type='password' name='passwordConfirm' required/><br></br>
+          <button type='submit' id='signUpButton'>Create Account</button>         
         </form> 
       </div> 
     ) 
