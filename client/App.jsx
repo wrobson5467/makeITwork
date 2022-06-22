@@ -13,7 +13,7 @@ import './stylesheets/stylesheet.css';
 
 
 function App (props){
-  const {data = [], isFetching} = useFetchJobsQuery();
+  // const {data = [], isFetching} = useFetchJobsQuery();
 
     return (
       <div>
