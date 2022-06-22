@@ -34,6 +34,4 @@ router.post('/logout', authController.getCookie, authController.removeSession, a
   return res.send("log out successfully");
 })
 
-
-
 module.exports = router;
