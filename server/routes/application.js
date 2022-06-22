@@ -20,9 +20,16 @@ router.post('/addApp', applicationController.getAvaiableIds, applicationControll
 router.post('/modApp', applicationController.updateResume, applicationController.updateCompany, applicationController.updateJob, applicationController.updateApplication , (req, res) =>{
   return res.send("modify application successfully!")
 })
-//deleteApp when user want to delete applications
 
 //getStageData when mount visualization page
+router.get('/getStageData',  applicationController.getStageResult, (req, res) =>{
+  return res.status(200).json(res.locals.stagedata);
+})
+//deleteApp when user want to delete applications
+router.post('/deleteApp', applicationController.deleteApplication, (req, res) =>{
+  return res.send("delete application successfully!")
+})
+
 
 
 

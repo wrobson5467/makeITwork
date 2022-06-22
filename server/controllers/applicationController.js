@@ -230,4 +230,48 @@ applicationController.updateResume = (req, res, next) => {
     });
   }
 
+  applicationController.getStageResult = (req, res, next) => {
+    const {userid} = req.body;
+    const query = 
+    `with tb as (
+      SELECT 'k' as K, COUNT(*) AS total_count
+      FROM applications
+      WHERE userid = ${userid}
+      )
+      ,
+      a as (
+      SELECT 'k' as K, stage, count(*) as count_by_stage
+      FROM applications
+      WHERE userid = ${userid}
+      GROUP BY stage, K
+      )
+      
+      SELECT a.stage, a.count_by_stage, tb.total_count
+      FROM a inner join tb on tb.K = a.K`
+    db.query(query)
+    .then(data =>{
+      res.locals.stagedata = data.rows;
+      return next();
+    } 
+    )
+    .catch(err =>{
+      console.log("error in applicationController.getApplications");
+    })
+  }
+
+
+  applicationController.deleteApplication = (req, res, next) => {
+    const {applicationid } = req.body;
+    const query = 
+    `DELETE FROM applications WHERE applicationid = ${applicationid}`;
+    db.query(query)
+    .then(data =>{
+      return next();
+    } 
+    )
+    .catch(err =>{
+      console.log("error in applicationController.deleteApplication");
+    })
+
+  }
 module.exports = applicationController;
