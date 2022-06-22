@@ -6,13 +6,10 @@ const authController = {};
 
 //save username, userid, hashedpassword to users table
 authController.createUser = (req, res, next) => {
-  console.log("in authController.createUser")
-  console.log('req', req)
 
-  const username = req.body.username;
-  const password = req.body.password;
+  const {username, password} = req.body;
+  console.log("username:", username);
 
-  console.log("username, password", username, password)
   if(!password || !username){
     console.log("Error in authController.createUser")
     return next({message: "Error in authController.createUser - Input not complete"});
@@ -67,6 +64,7 @@ authController.setCookie = (req, res, next) =>{
 //verifyUser for user login
 authController.verifyUser = (req, res, next) =>{
   const {username, password} = req.body;
+  console.log("username", username, "password", password);
   if(!password || !username){
     return next({message:"Error in authController.verifyUser - Input not complete"});
   };
@@ -98,6 +96,7 @@ authController.verifyUser = (req, res, next) =>{
 
 authController.getCookie= (req, res, next) => {
   console.log("in getCookie");
+  console.log("current ssid is:", req.cookie.ssid);
   res.locals.ssid = req.cookie.ssid;
   return next();
 
