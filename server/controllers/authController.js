@@ -6,8 +6,15 @@ const authController = {};
 
 //save username, userid, hashedpassword to users table
 authController.createUser = (req, res, next) => {
-  const {username, password} = req.body;
+  console.log("in authController.createUser")
+  console.log('req', req)
+
+  const username = req.body.username;
+  const password = req.body.password;
+
+  console.log("username, password", username, password)
   if(!password || !username){
+    console.log("Error in authController.createUser")
     return next({message: "Error in authController.createUser - Input not complete"});
   }
   bcrypt.hash(password, SALTROUND, (err, hashedPassword) => {
