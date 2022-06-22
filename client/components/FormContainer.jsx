@@ -30,7 +30,7 @@ export class Container extends Component {
   render() {
     return (
       <React.Fragment>
-        <button onClick={this.showModal} >Click Me!</button>
+        <button onClick={this.showModal} >Add New Job Application</button>
         {this.state.isShown ? (
           <Modal
             onSubmit={this.props.onSubmit}
