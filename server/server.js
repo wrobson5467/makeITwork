@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+var bodyParser = require('body-parser');
 
 const app = express();
 const PORT = 3000;
@@ -8,13 +9,15 @@ const PORT = 3000;
  * handle parsing request body
  */
 app.use(express.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 const userRouter = require('./routes/user.js');
-// api/jobs', jobsRouter)
 
 const applicationRouter = require('./routes/application.js');
 
-app.use('/user', userRouter);
+app.use('/api/user', userRouter);
 app.use('/app', applicationRouter);
 
 
