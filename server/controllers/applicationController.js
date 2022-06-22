@@ -258,4 +258,20 @@ applicationController.updateResume = (req, res, next) => {
       console.log("error in applicationController.getApplications");
     })
   }
+
+
+  applicationController.deleteApplication = (req, res, next) => {
+    const {applicationid } = req.body;
+    const query = 
+    `DELETE FROM applications WHERE applicationid = ${applicationid}`;
+    db.query(query)
+    .then(data =>{
+      return next();
+    } 
+    )
+    .catch(err =>{
+      console.log("error in applicationController.deleteApplication");
+    })
+
+  }
 module.exports = applicationController;
