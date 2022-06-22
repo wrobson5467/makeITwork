@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Nav from './components/Nav.jsx';
 import Login from './components/Login.jsx';
 import MainPage from './components/MainPage.jsx';
 import Visualization from "./components/Visualization.jsx";
-import SignUp from "./components/signup.jsx";
+import SignUp from "./components/SignUp.jsx";
 
 import {useFetchJobsQuery} from './features/jobs/jobs-API-slice';
 
@@ -13,6 +13,12 @@ import './stylesheets/stylesheet.css';
 
 
 function App (props){
+
+  useEffect(() => {
+    fetch('/user/verifylogin')
+    
+  })
+
   const {data = [], isFetching} = useFetchJobsQuery();
 
     return (
