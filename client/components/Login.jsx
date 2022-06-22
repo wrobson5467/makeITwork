@@ -1,6 +1,7 @@
 import {Navigate, useNavigate} from 'react-router-dom'
-
+import { Link } from 'react-router-dom';
 import React from 'react';
+
 function Login(props){
   return (
     // <div className='loginContainer'>
@@ -28,7 +29,7 @@ function Login(props){
         <button type="submit">Login</button>
       </div>
       <div className="container">
-        <button type="button" className="signupbtn">Sign Up</button>
+        <Link to={'/signup'}><button type="button" className="signupbtn">Sign Up</button></Link>
         <span className="psw">Forgot <a href="#">password?</a></span>
       </div>
     </form>
