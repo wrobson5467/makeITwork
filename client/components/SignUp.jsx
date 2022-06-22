@@ -14,7 +14,6 @@ function SignUp(props) {
           <input type='password' name='passwordConfirm' placeholder="Enter Password" required/><br></br>
           <button type='submit' className='signUpButton'>Create Account</button>
         </form> 
-        </div>
       </div> 
     ) 
 }

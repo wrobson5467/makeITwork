@@ -1,5 +1,5 @@
 body {
-  background-color: lightblue;
+  background-color: #8ecae6;
 }
 
 header {
@@ -8,6 +8,9 @@ header {
   font-family: 'Rubik Moonrocks', cursive;
   font-size: 40px;
 }
+h1 {
+  color: #023047;
+}
 
 /****************
       Nav Bar 
@@ -15,7 +18,7 @@ header {
 .headerBar {
   display: flex;
   align-items: center;
-  background-color: rgb(135, 177, 222);
+  background-color: #219ebc;
 }
 .navBar {
   width: 100%;
@@ -23,18 +26,30 @@ header {
   font-size: 20px;
 }
 .navItems {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  align-self: center;
+  justify-content: space-around; */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #219ebc;
+  text-align: center;
   list-style-type: none;
 }
-.navItems link {
-  text-decoration: none;
-}
 li {
-  flex-grow: 1;
-  justify-content: center;
+  float: left;
+}
+li a {
+  /* flex-grow: 1; */
+  /* justify-content: center; */
+  color: white;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 14px 16px;
+}
+.home {
+  background-color: #fb8500;
 }
 
 /*************
@@ -66,7 +81,7 @@ input[type=text], input[type=password] {
   font-weight: lighter;
 }
 button {
-  background-color: #04AA6D;
+  background-color: #ffb703;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -80,7 +95,7 @@ button:hover {
 .signupbtn {
   width: auto;
   padding: 10px 18px;
-  background-color: #f44336;
+  background-color: #fb8500;
 }
 .container {
   padding: 16px;
