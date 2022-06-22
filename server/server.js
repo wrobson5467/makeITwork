@@ -7,14 +7,15 @@ const PORT = 3000;
 /**
  * handle parsing request body
  */
- app.use(express.json());
+app.use(express.json());
 
 const userRouter = require('./routes/user.js');
+// api/jobs', jobsRouter)
 
+const applicationRouter = require('./routes/application.js');
 
 app.use('/user', userRouter);
-
-
+app.use('/app', applicationRouter);
 
 
 app.get('/', (req, res) =>{
