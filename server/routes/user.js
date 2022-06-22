@@ -29,7 +29,4 @@ router.post('/logout', authController.getCookie, authController.removeSession, a
 
 
 
-
-
-
 module.exports = router;
