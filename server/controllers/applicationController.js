@@ -122,7 +122,7 @@ applicationController.insertJob= (req, res, next) => {
  //insert job, return current jobid
  const query = 
  `INSERT INTO jobs ( jobid, position, location, remote, jobdescription, techstack, experiencelevel, companyid) 
- VALUES (${res.locals.availableJobId}, '${position}', '${location}', '${remote}', '${jobdescription}', '${techstack}', '${experiencelevel}', ${res.locals.current_companyid})
+ VALUES (${res.locals.availableJobId}, '${position}', '${location}', ${remote}, '${jobdescription}', '${techstack}', '${experiencelevel}', ${res.locals.current_companyid})
  RETURNING jobid
  `;
  db.query(query)
@@ -150,8 +150,84 @@ const query =
   } 
   )
   .catch(err =>{
-    console.log("error in insertApplication");
+    console.log("error in applicationController.insertApplication");
   });
 }
+
+applicationController.updateResume = (req, res, next) => {
+  const {resumeid, resumename, resumeurl } = req.body;
+  
+
+  const query = 
+    `UPDATE resumes
+    SET resumename = '${resumename}', resumeurl = '${resumeurl}'
+    WHERE resumeid = ${resumeid}`;
+
+    db.query(query)
+    .then(data =>{
+      return next();
+    } 
+    )
+    .catch(err =>{
+      console.log("error in applicationController.updateResume");
+    });
+  
+  }
+
+  applicationController.updateCompany = (req, res, next) => {
+    const {companyid, companyname, companytype } = req.body;
+    
+    const query = 
+    `UPDATE companies
+    SET companyname = '${companyname}', companytype = '${companytype}'
+    WHERE companyid = ${companyid}`;
+  
+    db.query(query)
+    .then(data =>{
+      return next();
+    } 
+    )
+    .catch(err =>{
+      console.log("error in applicationController.updateCompany");
+    });
+  
+  
+  
+  }
+
+  applicationController.updateJob= (req, res, next) => {
+    const {jobid, position, location, remote, jobdescription, techstack, experiencelevel } = req.body;
+    const query = 
+    `UPDATE jobs
+    SET position = '${position}', location = '${location}', remote =${remote}, jobdescription='${jobdescription}', techstack='${techstack}', experiencelevel='${experiencelevel}'
+    WHERE jobid = ${jobid}`;
+
+   db.query(query)
+   .then(data =>{
+     return next();
+   } 
+   )
+   .catch(err =>{
+     console.log("error in applicationController.updateJob");
+   });
+  
+  }
+
+  applicationController.updateApplication= (req, res, next) => {
+    const {applicationid, stage, currenttasks, interest, interviewquestions } = req.body;
+    const query = 
+    `UPDATE applications
+    SET stage = '${stage}', currenttasks = '${currenttasks}', interest = '${interest}', interviewquestions = '${interviewquestions}', modifieddate = current_timestamp
+    WHERE applicationid = ${applicationid}`;
+
+    db.query(query)
+    .then(data =>{
+      return next();
+    } 
+    )
+    .catch(err =>{
+      console.log("applicationController.updateApplication");
+    });
+  }
 
 module.exports = applicationController;

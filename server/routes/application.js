@@ -17,7 +17,9 @@ router.post('/addApp', applicationController.getAvaiableIds, applicationControll
 })
 
 //modApp when user modify the table
-
+router.post('/modApp', applicationController.updateResume, applicationController.updateCompany, applicationController.updateJob, applicationController.updateApplication , (req, res) =>{
+  return res.send("modify application successfully!")
+})
 //deleteApp when user want to delete applications
 
 //getStageData when mount visualization page
