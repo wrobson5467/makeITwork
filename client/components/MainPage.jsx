@@ -1,10 +1,15 @@
 
 import React from 'react';
+import Container  from './FormContainer'
+
 
 function MainPage()   {
    return (
-      <h1>MAIN PAGE!</h1>
+      <div className='main-display'>
+         <Container/>
+      </div>
    )
+   
 }
 
 export default MainPage;
