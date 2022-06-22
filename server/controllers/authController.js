@@ -89,12 +89,28 @@ authController.verifyUser = (req, res, next) =>{
 
 };
 
-authController.getCookie= (req, res, next) =>{
+authController.getCookie= (req, res, next) => {
   console.log("in getCookie");
   res.locals.ssid = req.cookie.ssid;
   return next();
 
 };
+
+authController.getUserId = (req, res, next) => {
+  const ssid = res.locals.ssid;
+  const query = `SELECT userid FROM sessions WHERE cookieid = '${ssid}`
+  db.query(query)
+  .then(data => {
+    res.locals.userId = data.rows[0];
+  })
+  .catch(err => {
+    const errorObj = {
+      log: 'error in authController.getUserId',
+      message: `server error ${err}`
+    };
+    return next(errorObj)
+  })
+}
 
 authController.verifySession= (req, res, next) =>{
   const query = `SELECT COUNT(*) AS count FROM sessions WHERE cookieid = '${res.locals.ssid}'`;
