@@ -6,10 +6,10 @@ function Nav (){
       <div className='headerBar'>
         <div className='navBar'>
           <ul className='navItems'>
-            <li><Link to='/mainpage'>Homepage</Link></li>
+            <li class='home'><Link to='/mainpage'>Homepage</Link></li>
             <li><Link to='/visual'>Visualization</Link></li>
             <li><Link to='/cardview'>Cards View</Link></li>
-            <li><Link to='/'>Logout</Link></li>
+            <li style={{float:'right'}}><Link to='/' style={{color:'#023047'}}>Log Out</Link></li>
           </ul>
         </div>
         {/* <div className='welcome'>
