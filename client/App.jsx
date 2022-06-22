@@ -6,7 +6,7 @@ import Login from './components/Login.jsx';
 import MainPage from './components/MainPage.jsx';
 import Visualization from "./components/Visualization.jsx";
 import SignUp from "./components/signup.jsx";
-
+import './stylesheets/stylesheet.css'
 function App (props){
     return (
       <div>
