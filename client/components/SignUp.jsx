@@ -5,7 +5,6 @@ import React from 'react';
 function SignUp(props) {
     return (
       <div className='signupContainer'>
-        
         <form className='signupForm' method="POST" action='api/user/signup'>
         <div className='container'>
           <label><b>Username</b></label>
@@ -15,7 +14,6 @@ function SignUp(props) {
           <button type='submit' className='signUpButton'>Create Account</button>
           </div>
         </form> 
-        
       </div> 
     ) 
 }

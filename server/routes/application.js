@@ -12,10 +12,11 @@ router.get('/getApp', applicationController.getApplications, (req, res) =>{
 
 
 //addApp when user sumbit the form
-
+router.post('/addApp', applicationController.getAvaiableIds, applicationController.insertResume, applicationController.insertCompany, applicationController.insertJob, applicationController.insertApplication , (req, res) =>{
+  return res.send("add application successfully!")
+})
 
 //modApp when user modify the table
-
 
 //deleteApp when user want to delete applications
 

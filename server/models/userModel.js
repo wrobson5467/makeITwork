@@ -11,9 +11,23 @@ module.exports = {
   }
 };
 
+// CREATE TABLE resumes (
+//   resumeid BIGINT PRIMARY KEY,
+//   resumename text,
+//   resumeurl text,
+//   userid BIGINT,
+//   UNIQUE (userid, resumename)
+// )
+
+// CREATE TABLE companies (
+//   companyid BIGINT PRIMARY KEY,
+//   companyname text UNIQUE,
+//   companytype text
+
+// )
 
 // CREATE TABLE jobs (
-//   jobid SERIAL PRIMARY KEY,
+//   jobid BIGINT PRIMARY KEY,
 //   position text,
 //   location text,
 //   remote BOOLEAN,
@@ -23,16 +37,9 @@ module.exports = {
 //   companyid BIGINT
 // )
 
-// CREATE TABLE resumes (
-//   resumeid SERIAL PRIMARY KEY,
-//   resumename text,
-//   resumeurl text,
-//   userid BIGINT
-// )
-
 
 // CREATE TABLE applications (
-//   applicationid SERIAL PRIMARY KEY,
+//   applicationid BIGINT PRIMARY KEY,
 //   stage text,
 //   currenttasks text,
 //   interest text,
@@ -40,17 +47,12 @@ module.exports = {
 //   modifieddate timestamp,
 //   userid BIGINT,
 //   jobid BIGINT,
-//   resumeid BIGINT
+//   resumeid BIGINT,
+//   UNIQUE (userid, jobid)
 
 // )
 
-// CREATE TABLE companies (
-//   companyid SERIAL PRIMARY KEY,
-//   companyname text,
-//   companytype text,
-//   jobid BIGINT
 
-// )
 
 
 // CREATE TABLE sessions (
