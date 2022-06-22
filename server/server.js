@@ -10,11 +10,10 @@ const PORT = 3000;
 app.use(express.json());
 
 const userRouter = require('./routes/user.js');
-
+const applicationRouter = require('./routes/application.js');
 
 app.use('/user', userRouter);
-
-
+app.use('/app', applicationRouter);
 
 
 app.get('/', (req, res) =>{
