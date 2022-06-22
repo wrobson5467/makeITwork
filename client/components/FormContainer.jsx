@@ -1,57 +1,49 @@
-import React, { Component, useState } from 'react';
-import { FormModal } from './FormModal';
-// import AddMeButton from '';
+import React, { Component } from 'react';
+import { Modal } from './FormModal';
 
-function FormContainer (props)  {
-    
-    const [isShown, setIsShown] = useState(false)
-
-//   state = { isShown: false };
-
-  const showModal = () => {
-    this.setIsShown(true), 
-    // () => {
-    //   this.closeButton.focus();
-    // });
+export class Container extends Component {
+  state = { isShown: false };
+  showModal = () => {
+    this.setState({ isShown: true }, () => {
+      this.closeButton.focus();
+    });
     this.toggleScrollLock();
   };
-
-  const closeModal = () => {
-    this.setIsShown(false);
+  closeModal = () => {
+    this.setState({ isShown: false });
     this.TriggerButton.focus();
     this.toggleScrollLock();
   };
-
-  const onKeyDown = (event) => {
+  onKeyDown = (event) => {
     if (event.keyCode === 27) {
       this.closeModal();
     }
   };
-
-  const onClickOutside = (event) => {
+  onClickOutside = (event) => {
     if (this.modal && this.modal.contains(event.target)) return;
     this.closeModal();
   };
 
-  const toggleScrollLock = () => {
+  toggleScrollLock = () => {
     document.querySelector('html').classList.toggle('scroll-lock');
   };
-
+  render() {
     return (
       <React.Fragment>
-        <button  onclick = {showModal}> push me!</button>
-          <FormModal
+        <button onClick={this.showModal} >Click Me!</button>
+        {this.state.isShown ? (
+          <Modal
             onSubmit={this.props.onSubmit}
             modalRef={(n) => (this.modal = n)}
-            buttonRef={(n) => (closeButton = n)}
-            closeModal={closeModal}
-            onKeyDown={onKeyDown}
-            onClickOutside={onClickOutside}
+            buttonRef={(n) => (this.closeButton = n)}
+            closeModal={this.closeModal}
+            onKeyDown={this.onKeyDown}
+            onClickOutside={this.onClickOutside}
           />
         ) : null}
       </React.Fragment>
     );
-
+  }
 }
 
-export default FormContainer;
+export default Container;
