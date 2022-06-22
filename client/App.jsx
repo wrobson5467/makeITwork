@@ -7,7 +7,7 @@ import MainPage from './components/MainPage.jsx';
 import Visualization from "./components/Visualization.jsx";
 import SignUp from "./components/signup.jsx";
 
-import {useFetchJobsQuery} from './features/jobs/jobs-API- slice';
+import {useFetchJobsQuery} from './features/jobs/jobs-API-slice';
 
 import './stylesheets/stylesheet.css';
 
